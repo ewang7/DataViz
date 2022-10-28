@@ -15,6 +15,7 @@
           <th>Total Enrollment</th>
           <th>Percent Blended/Hybrid Learning</th>
           <th>Percent Remote Learning</th>
+          <th>Data Visual</th>
         </tr>
         <xsl:for-each select="response/row">
           <tr>
@@ -22,6 +23,7 @@
             <td class="totalEnroll"><xsl:value-of select="total_enrollment"/></td>
             <td class="blended"><xsl:value-of select="blended_1"/></td>
             <td class="remote"><xsl:value-of select="remote_1"/></td>
+            <td><canvas width="100px" height="20px">Browser does not support HTML canvas</canvas></td>
           </tr>
         </xsl:for-each>
       </table>
