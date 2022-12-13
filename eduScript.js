@@ -30,16 +30,18 @@ for (var i = 0; i < remoteStats.length; i++) {
 
 /* Data visualization via canvas for barGraphs */
 
+// parseInt is originally used below due to commas in the data, hence the
+// extra parenthasees around certain variables
 for (var i = 0; i < canvasCollection.length; i++) {
   var barGraphsContext = document.getElementById(i+2000).getContext("2d");
   var leftLength = document.getElementById(i).innerHTML;
-  leftLength = leftLength.substring(0, leftLength.length - 1);
+  leftLength = leftLength.substring(0, leftLength.length - 1); //remove percent symbol
   var rightLength = document.getElementById(i+1000).innerHTML;
-  rightLength = rightLength.substring(0, rightLength.length - 1);
+  rightLength = rightLength.substring(0, rightLength.length - 1); //remove percent symbol
   barGraphsContext.fillStyle = "purple";
-  barGraphsContext.fillRect(0,0,parseInt(leftLength),20);
+  barGraphsContext.fillRect(0,0,(leftLength),20);
   barGraphsContext.fillStyle = "green";
-  barGraphsContext.fillRect(parseInt(leftLength),0,parseInt(rightLength),20);
+  barGraphsContext.fillRect((leftLength),0,(rightLength),20);
 }
 
 
@@ -65,19 +67,24 @@ console.log(remoteCountTotal);
 
 
 var pieChartContext = document.getElementById("pieChart").getContext("2d");
+
 pieChartContext.strokeStyle = "Purple";
 pieChartContext.fillStyle = "Purple";
-pieChartContext.lineWidth = 2;
+pieChartContext.lineWidth = 1;
 pieChartContext.beginPath();
-pieChartContext.arc(250,250,100,0,(blendedCountTotal / enrollmentSumTotal) * Math.PI * 2,true);
+pieChartContext.arc(250,250,100,0,(blendedCountTotal/enrollmentSumTotal)*2*Math.PI, true);
+pieChartContext.lineTo(250,250);
+pieChartContext.lineTo(350,250);
 pieChartContext.stroke();
 pieChartContext.fill();
 
+
+
 pieChartContext.strokeStyle = "Green";
 pieChartContext.fillStyle = "Green";
-pieChartContext.lineWidth = 2;
+pieChartContext.lineWidth = 1;
 pieChartContext.beginPath();
-pieChartContext.arc(250, 250,100,0,(remoteCountTotal / enrollmentSumTotal) * Math.PI * 2, false);
+pieChartContext.arc(250,250,100,0,(remoteCountTotal/enrollmentSumTotal)*2*Math.PI, false);
 pieChartContext.lineTo(250,250);
 pieChartContext.lineTo(350,250);
 pieChartContext.stroke();

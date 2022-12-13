@@ -9,3 +9,18 @@ th {
 td {
   text-align: center;
 }
+
+/*
+div.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+div.col-1 {
+  text-align: left;
+}
+
+div.col-2 {
+  text-align: right;
+}
+*/
